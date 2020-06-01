@@ -66,6 +66,7 @@ static NSString* systemSqliteDBFileName = @"testdb.sqlite";
         return YES;
     }
     
+    sqlite3_close(dbConnection); // you need to close this even if open failed
     return NO;
 }
 
@@ -122,6 +123,8 @@ static NSString* systemSqliteDBFileName = @"testdb.sqlite";
         sqlite3_close(dbConnection);
         return columnInfo;
     }
+
+    sqlite3_close(dbConnection);
 
     // Fail to open the database.
     NSLog(@"Error - failed to open the database.");
