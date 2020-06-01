@@ -95,20 +95,26 @@ static NSString* systemSqliteDBFileName = @"testdb.sqlite";
             [columnInfo addObject:[NSString stringWithFormat:@"\nColumn Count is %d.", cols]];
             for (int i=0; i<cols; i++)
             {
-                NSString* columnName = ((sqlite3_column_name(statement, i)) != NULL) ? [[NSString alloc] initWithUTF8String: (char*)sqlite3_column_name(statement, i)] : @"";
-//                NSLog(@"%@", columnName);
-                /* For sqlite3colum, if static lib test, the method can return NULL.
+                const char *string = sqlite3_column_name(statement, i);
+                NSString* columnName = string ? @(string) : @"";
+                NSLog(@"sqlite3_column_name: %@", columnName);
+
+                /* For sqlite3column, if static lib test, the method can return NULL.
                 ** NULL is returned if the result column is an expression or constant or
                 ** anything else which is not an unambiguous reference to a database column.
                 */
-                
-                NSLog(@"%s", sqlite3_column_database_name(statement, i));
-                NSString* columnDBName = ((sqlite3_column_database_name(statement, i)) != NULL) ? [[NSString alloc] initWithUTF8String: (char*)sqlite3_column_database_name(statement, i)] : @"";
-                NSLog(@"%@",columnDBName);
-                NSString* columnTableName = ((sqlite3_column_table_name(statement, i)) != NULL) ? [[NSString alloc] initWithUTF8String: (char*)sqlite3_column_table_name(statement, i)] : @"";
-                NSLog(@"%@",columnTableName);
-                NSString* columnOriginName = ((sqlite3_column_origin_name(statement, i)) != NULL) ? [[NSString alloc] initWithUTF8String: (char*)sqlite3_column_origin_name(statement, i)] : @"";
-                NSLog(@"%@",columnOriginName);
+
+                string = sqlite3_column_database_name(statement, i);
+                NSString* columnDBName = string ? @(string) : @"";
+                NSLog(@"sqlite3_column_database_name: %@", columnDBName);
+
+                string = sqlite3_column_table_name(statement, i);
+                NSString* columnTableName = string ? @(string) : @"";
+                NSLog(@"sqlite3_column_table_name: %@", columnTableName);
+
+                string = sqlite3_column_origin_name(statement, i);
+                NSString* columnOriginName = string ? @(string) : @"";
+                NSLog(@"sqlite3_column_origin_name: %@", columnOriginName);
                 
                 NSMutableString *entry = [NSMutableString stringWithFormat:@"\nColumn #%d:", i];
                 [entry appendString:[NSString stringWithFormat:@"\nName:\t          %@", columnName]];
