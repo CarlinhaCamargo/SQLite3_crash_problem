@@ -15,7 +15,23 @@
 		973A6E1D248027E800EA2393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 973A6E1B248027E800EA2393 /* LaunchScreen.storyboard */; };
 		973A6E20248027E800EA2393 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A6E1F248027E800EA2393 /* main.m */; };
 		973A6E3324805AED00EA2393 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 973A6E272480283700EA2393 /* libsqlite3.tbd */; };
+		979A8A2424868FC60003FF0C /* libsqlcipher.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97200D0824857702000F06E3 /* libsqlcipher.dylib */; };
+		979A8A2524868FC60003FF0C /* libsqlcipher.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 97200D0824857702000F06E3 /* libsqlcipher.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		979A8A2624868FC60003FF0C /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				979A8A2524868FC60003FF0C /* libsqlcipher.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		97200D0424857694000F06E3 /* libsqlcipher.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlcipher.dylib; path = ../../Bluecedar02/prometheus/mapnext/apps/ios/PrometheusTestApp/PrometheusTestApp/DatabaseTests/libsqlcipher.dylib; sourceTree = "<group>"; };
@@ -40,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				979A8A2424868FC60003FF0C /* libsqlcipher.dylib in Frameworks */,
 				973A6E3324805AED00EA2393 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +119,7 @@
 				973A6E06248027E600EA2393 /* Sources */,
 				973A6E07248027E600EA2393 /* Frameworks */,
 				973A6E08248027E600EA2393 /* Resources */,
+				979A8A2624868FC60003FF0C /* Embed Libraries */,
 			);
 			buildRules = (
 			);
